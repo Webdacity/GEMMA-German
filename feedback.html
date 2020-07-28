@@ -69,25 +69,29 @@
             </div>
             <ul class="navbar-content-links">
                 <li>
-                    <a href="/index.html">HOME</a>
+                    <a href="/index.html">STARTSEITE</a>
                 </li>
                 <li>
-                    <a href="/about.html">ABOUT</a>
+                    <a href="/about.html">ÜBER</a>
                 </li>
                 <li>
-                    <a href="/concept.html">CONCEPT</a>
+                    <a href="/concept.html">KONZEPT</a>
                 </li>
                 <li>
-                    <a href="/therapy.html">THERAPY</a>
+                    <a href="/therapy.html">THERAPIE</a>
                 </li>
                 <li>
-                    <a href="/contact.html">CONTACT</a>
+                    <a href="/contact.html">KONTAKT</a>
                 </li>
             </ul>
             <div class="navbar-content-language">
-                <a>DE</a>
+                <a class="active">
+                    DE
+                </a>
                 <div></div>
-                <a class="active">EN</a>
+                <a href="http://gemmainstitute.com/">
+                    EN
+                </a>
             </div>
         </div>
 
@@ -128,7 +132,7 @@
                     <h1>01</h1>
                 </div>
                 <div class="section-text col-sm-12 col-md-8">
-                    <h1>Session Feedback:</h1>
+                    <h1>Sitzung Feedback:</h1>
                     <div class="line"></div>
                     <h3>Please complete the form below to provide feedback about your session: </h3>
                     <form class="needs-validation" novalidate id="session-form">
@@ -268,7 +272,7 @@
                             </div>
                         </div>
                         <div class="form-row mt-2">
-                            <button class="my-button light" type="submit">
+                            <button class="my-button light" onclick="submitForm('website-form','/feedback/website')">
                                 <a>Submit Feedback</a>
                             </button>
                         </div>

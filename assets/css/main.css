@@ -616,6 +616,8 @@ footer a:hover {
     align-items: center;
     flex-direction: column;
     z-index: 200;
+
+    display: none;
 }
 
 .loader img {

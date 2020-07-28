@@ -33,8 +33,16 @@ window.onscroll = function () {
 
 // Page Loader
 
-window.onload = (event) => {
+const showLoader = () => {
+    $(".loader").fadeIn(1000);
+}
+
+const hideLoader = () => {
     $(".loader").fadeOut(1000);
+}
+
+window.onload = (event) => {
+    hideLoader()
 };
 
 // Footer
@@ -68,6 +76,18 @@ if (pageName === "/" || pageName === "/index.html" || pageName === "/about.html"
 
 // ----------------------------------------------
 // FORMS
+
+// General Form Submission
+
+const submitForm = (formID, formURL) => {
+    showLoader();
+
+    axios({
+        method: "post",
+        url: formURL,
+        data: ""
+    })
+}
 
 // Feedback Form - Website
 
