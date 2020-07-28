@@ -1,0 +1,166 @@
+/* Imports */
+
+@import "./main.css";
+
+/* Variables */
+
+:root {
+    --blue: #141546;
+    --yellow: #c69636;
+    --grey: #1a1a1a;
+    --light-grey: #e9eaec;
+    --light-blue: #f5f6f8;
+    --serif: "Playfair Display";
+    --sans-serif: "Raleway"
+}
+
+/* ------------------------------- */
+
+@media only screen and (max-width: 991px) {
+
+
+    /* Home Page */
+
+    #home-services {
+        justify-content: space-around;
+        margin-top: 4rem;
+    }
+
+    .service {
+        margin-top: 3rem;
+    }
+
+}
+
+
+
+/* ----------------------------------- */
+
+@media only screen and (max-width: 768px) {
+
+
+    /* General */
+
+    .navbar.open .navbar-content {
+        width: 45vw;
+    }
+
+
+    /* Sections */
+
+    .gemma-section .section-number {
+        margin-bottom: 4rem;
+    }
+
+    .gemma-section .section-number h1 {
+        font-size: 5.5rem;
+    }
+
+    .gemma-section .section-right .section-text {
+        border-left: none;
+        padding-left: 15px;
+    }
+
+    .gemma-section .section-left .section-text {
+        border-right: none;
+        padding-right: 15px;
+    }
+
+    /* Home page */
+
+    #home-about-stefanos img {
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+
+    .section-home-landing {
+        padding: 5rem 0 2rem 0;
+    }
+
+    .section-home-landing .video-frame {
+        margin-top: 3rem;
+    }
+
+    .video-frame .video-overlay {
+        height: 100%;
+        margin-top: 0;
+    }
+
+
+    /* Footer */
+
+    footer img {
+        width: 30%;
+        margin-bottom: 1rem;
+    }
+
+    footer .row>div {
+        margin-bottom: 1rem;
+    }
+
+}
+
+
+
+/* ----------------------------------- */
+
+@media only screen and (max-width: 576px) {
+
+    /* General */
+
+    .navbar.open .navbar-content {
+        width: 60vw;
+    }
+
+    /* Video */
+
+    .video-frame iframe {
+        position: absolute;
+        top: 0;
+        left: 2.5%;
+        width: 95%;
+        height: 100%;
+    }
+
+    .video-frame .video-overlay {
+        left: 2.5%;
+        width: 95%;
+        height: 100%;
+    }
+
+
+    /* Feedback Page */
+
+    .form-rating span {
+        width: 20%;
+        margin-bottom: 0.25rem;
+    }
+
+    .form-rating span:nth-child(6) {
+        border-left: 1px solid var(--blue);
+    }
+
+
+    /* Footer */
+
+    footer {
+        padding: 1rem 10% 0 10%;
+    }
+
+    footer ul {
+        border-left: none;
+        border-bottom: 1px solid var(--yellow);
+        text-align: center;
+        padding-bottom: 1rem;
+        padding-left: 0;
+    }
+
+    .footer-contact ul:last-child {
+        border-bottom: none;
+    }
+
+    .footer-contact {
+        margin-bottom: 0 !important;
+    }
+
+}
