@@ -79,15 +79,7 @@ if (pageName === "/" || pageName === "/index.html" || pageName === "/about.html"
 
 // General Form Submission
 
-const submitForm = (formID, formURL) => {
-    showLoader();
 
-    axios({
-        method: "post",
-        url: formURL,
-        data: ""
-    })
-}
 
 // Feedback Form - Website
 
