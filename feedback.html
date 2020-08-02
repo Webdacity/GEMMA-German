@@ -139,23 +139,23 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label>vollständiger Name</label>
-                                <input type="text" name="name" required>
+                                <input type="text" name="full_name" required>
                                 <div class="invalid-feedback">
-                                    Please provide your full name
+                                    Bitte geben Sie Ihren vollständigen Namen an
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Sitzungsdatum</label>
-                                <input type="date" name="date" required>
+                                <input type="date" name="session_date" required>
                                 <div class="invalid-feedback">
-                                    Please provide a session date
+                                    Bitte geben Sie einen Sitzungstermin an
                                 </div>
                             </div>
                         </div>
                         <div class="form-row form-question">
                             <div class="col-md-12 mb-3">
                                 <label> <i>1</i> Konnten Sie in der Sitzung über Ihre Wünsche sprechen?</label>
-                                <div class="form-rating">
+                                <div class="form-rating" id="question1-rating">
                                     <span>1</span>
                                     <span>2</span>
                                     <span>3</span>
@@ -171,14 +171,18 @@
                                     <label>1- Not at all</label>
                                     <label>10 -Totally</label>
                                 </div>
-                                <textarea name="question1" rows="5" placeholder="ein Wort der Erklärung"></textarea>
+                                <textarea name="question1" rows="5" placeholder="ein Wort der Erklärung"
+                                    required></textarea>
+                                <div class="invalid-feedback">
+                                    Bitte geben Sie eine gültige Antwort
+                                </div>
                             </div>
                         </div>
                         <div class="form-row form-question">
                             <div class="col-md-12 mb-3">
                                 <label> <i>2</i>Fühlten Sie sich während der Sitzung von dem Therapeut
                                     verstanden?</label>
-                                <div class="form-rating">
+                                <div class="form-rating" id="question2-rating">
                                     <span>1</span>
                                     <span>2</span>
                                     <span>3</span>
@@ -194,17 +198,18 @@
                                     <label>1- Not at all</label>
                                     <label>10 -Totally</label>
                                 </div>
-                                <textarea name="question2" rows="5"
-                                    placeholder="In diesem Bereich fühlte ich mich nicht verstanden"></textarea>
-                                <textarea class="mt-4" name="question1" rows="5"
-                                    placeholder="In diesem Bereich fühlte ich mich verstanden."></textarea>
+                                <textarea name="question2a" rows="5"
+                                    placeholder="In diesem Bereich fühlte ich mich nicht verstanden"
+                                    required></textarea>
+                                <textarea class="mt-4" name="question2b" rows="5"
+                                    placeholder="In diesem Bereich fühlte ich mich verstanden." required></textarea>
                             </div>
                         </div>
                         <div class="form-row form-question">
                             <div class="col-md-12 mb-3">
                                 <label> <i>3</i> Fühlten Sie sich während der Sitzung von Ihrem Partner / den anderen
                                     Familienmitgliedern verstanden?</label>
-                                <div class="form-rating">
+                                <div class="form-rating" id="question3-rating">
                                     <span>1</span>
                                     <span>2</span>
                                     <span>3</span>
@@ -220,28 +225,43 @@
                                     <label>1- Not at all</label>
                                     <label>10 -Totally</label>
                                 </div>
-                                <textarea name="question2" rows="5"
+                                <textarea name="question3a" rows="5"
                                     placeholder="In diesem Bereich fühlte ich mich nicht verstanden"></textarea>
-                                <textarea class="mt-4" name="question1" rows="5"
+                                <div class="invalid-feedback">
+                                    Bitte geben Sie eine gültige Antwort
+                                </div>
+                                <textarea class="mt-4" name="question3b" rows="5"
                                     placeholder="In diesem Bereich fühlte ich mich verstanden."></textarea>
+                                <div class="invalid-feedback">
+                                    Bitte geben Sie eine gültige Antwort
+                                </div>
                             </div>
                         </div>
                         <div class="form-row form-question">
                             <div class="col-md-12 mb-3">
                                 <label> <i>4</i> Was hat Sie während der Sitzung am meisten überrascht?</label>
-                                <textarea name="question4" rows="5"></textarea>
+                                <textarea name="question4" rows="5" placeholder="ein Wort der Erklärung"
+                                    required></textarea>
+                                <div class="invalid-feedback">
+                                    Bitte geben Sie eine gültige Antwort
+                                </div>
 
                             </div>
                         </div>
                         <div class="form-row form-question">
                             <div class="col-md-12 mb-3">
                                 <label> <i>5</i> Was hat Sie während der Sitzung am meisten bewegt?</label>
-                                <textarea name="question5" rows="5"></textarea>
+                                <textarea name="question5" rows="5" placeholder="ein Wort der Erklärung"
+                                    required></textarea>
+                                <div class="invalid-feedback">
+                                    Bitte geben Sie eine gültige Antwort
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <button class="my-button" type="submit">
-                                <a>Submit Feedback</a>
+                            <button class="my-button" type="submit"
+                                onclick="validateForm('session-form','/feedback/session')">
+                                <a>Feedback senden</a>
                             </button>
                         </div>
                     </form>
@@ -264,7 +284,7 @@
                     <h1>Website Feedback:</h1>
                     <div class="line"></div>
                     <h3>Please give your feedback regarding your experience on this website:</h3>
-                    <form class="needs-validation dark-form" novalidate id="website-form">
+                    <form name="website-form" id="website-form" class="needs-validation dark-form" novalidate>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <textarea name="website-feedback" rows="5"
@@ -272,8 +292,8 @@
                             </div>
                         </div>
                         <div class="form-row mt-2">
-                            <button class="my-button light" onclick="submitForm('website-form','/feedback/website')">
-                                <a>Submit Feedback</a>
+                            <button class="my-button light" onclick="validateForm('website-form','/feedback/website')">
+                                <a>Feedback senden</a>
                             </button>
                         </div>
                 </div>
@@ -286,6 +306,28 @@
         </div>
     </section>
 
+    <!-- Modal Submission -->
+    <div class="modal" tabindex="-1" role="dialog" id="submission-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Danke</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="my-button" data-dismiss="modal">
+                        <a>schließen</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="footer"></div>
 
 
@@ -295,6 +337,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./assets/js/main.js"></script>
 
 </body>

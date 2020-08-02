@@ -616,8 +616,6 @@ footer a:hover {
     align-items: center;
     flex-direction: column;
     z-index: 200;
-
-    display: none;
 }
 
 .loader img {
@@ -693,6 +691,18 @@ footer a:hover {
 }
 
 
+
+/* Submission Modal */
+
+#submission-modal .modal-content {
+    background-color: var(--light-grey);
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border: 2px solid var(--blue);
+}
 
 /* ------------------------------------------------ */
 

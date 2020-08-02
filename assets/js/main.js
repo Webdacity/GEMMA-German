@@ -1,3 +1,7 @@
+// const api_url = "https://gemma-backend.herokuapp.com";
+const api_url = "http://localhost:3000";
+
+
 // ANIMATIONS
 
 // Navbar Open & Close
@@ -57,7 +61,7 @@ $(document).ready(() => {
 // Feedback Forms
 
 $("form .form-rating span").click(function () {
-    $("form .form-rating span").removeClass("clicked");
+    $(this).closest(".form-rating").find("span").removeClass("clicked");
     $(this).addClass("clicked");
 });
 
@@ -77,11 +81,98 @@ if (pageName === "/" || pageName === "/index.html" || pageName === "/about.html"
 // ----------------------------------------------
 // FORMS
 
-// General Form Submission
+// Send Ping to Wake Server
 
+if (pageName === "/feedback.html" || pageName === "/application.html") {
+    axios({
+            method: "get",
+            url: "https://gemma-backend.herokuapp.com/ping"
+        })
+        .then(result => {
+            console.log("Server Pinged: " + result.status)
+        })
+}
 
+// Modal 
 
-// Feedback Form - Website
+const showSubmissionModal = (text) => {
+    $('#submission-modal p').html(text);
+    $('#submission-modal').modal('toggle');
 
+}
 
-// Application Form
+// Validation
+
+// Validate Form
+const validateForm = (formToVal, formURL) => {
+    let form = document.getElementById(formToVal);
+    let email = $(".order-form [name='email_address']").val();
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (form.checkValidity() === false) {
+        console.log("Validation Fail")
+        event.preventDefault();
+        event.stopPropagation();
+        alert("Please ensure that you've completed all the fields.")
+    } else {
+        console.log("Validation Success")
+        submitForm(formToVal, formURL);
+    }
+    form.classList.add('was-validated');
+};
+
+const submitForm = (formID, formURL) => {
+    event.preventDefault();
+
+    let formData = $(`#${formID}`).serializeArray();
+
+    if (formID === "website-form") {
+        sendForm(formData, formURL)
+    }
+
+    // Sessions Form Data Exception (Ratings)
+    else if (formID === "session-form") {
+
+        // check for session ratings
+        for (let i = 1; i <= 3; i++) {
+            if ($(`#question${i}-rating`).find('span.clicked').length === 0) {
+                return alert("Please ensure that you have entered the appropriate rating for questions 1 - 3");
+            }
+
+            formData.push({
+                name: `question${i}-rating`,
+                value: $(`#question${i}-rating span.clicked`).html()
+            })
+        }
+
+        sendForm(formData, formURL)
+    }
+
+    // Send Data
+    console.log(formData)
+}
+
+// Send Form Data
+
+const sendForm = (formData, formURL) => {
+
+    showLoader();
+    axios({
+            method: "post",
+            url: `${api_url}${formURL}`,
+            data: formData
+        })
+        .then(result => {
+            console.log(result.data);
+            hideLoader()
+            if (result.status === 500) {
+                alert(result.data.message)
+            } else {
+                showSubmissionModal("Thank you for submitting your feedback!");
+            }
+        });
+
+}
+
+const fillFIelds = () => {
+    $("form textarea").val("hytg")
+}
