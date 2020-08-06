@@ -112,7 +112,7 @@ const validateForm = (formToVal, formURL) => {
         console.log("Validation Fail")
         event.preventDefault();
         event.stopPropagation();
-        alert("Please ensure that you've completed all the fields.")
+        alert("Bitte stellen Sie sicher, dass Sie alle Felder ausgefüllt haben.")
     } else {
         console.log("Validation Success")
         submitForm(formToVal, formURL);
@@ -129,13 +129,13 @@ const submitForm = (formID, formURL) => {
         sendForm(formData, formURL)
     }
 
-    // Sessions Form Data Exception (Ratings)
+    // Sessions Form
     else if (formID === "session-form") {
 
         // check for session ratings
         for (let i = 1; i <= 3; i++) {
             if ($(`#question${i}-rating`).find('span.clicked').length === 0) {
-                return alert("Please ensure that you have entered the appropriate rating for questions 1 - 3");
+                return alert("Bitte stellen Sie sicher, dass Sie die entsprechende Bewertung für die Fragen 1 - 3 eingegeben haben");
             }
 
             formData.push({
@@ -147,8 +147,47 @@ const submitForm = (formID, formURL) => {
         sendForm(formData, formURL)
     }
 
-    // Send Data
-    console.log(formData)
+    // Application Form
+    else if (formID === "application-form") {
+
+        // Symptoms
+        let symptomLength = $("#symptom-checks").find("input").length;
+        let symptoms = []
+        for (let j = 1; j <= symptomLength + 1; j++) {
+            if ($(`#symptom-checks .form-check:nth-child(${j}) input`).is(":checked")) {
+                symptoms.push($(`#symptom-checks .form-check:nth-child(${j}) label`).html());
+            }
+        }
+
+        formData.push({
+            name: "question6-1",
+            value: symptoms
+        });
+
+        formData.push({
+            name: "cost-terms",
+            value: "I agree to the terms of cancellation."
+        });
+
+        formData.push({
+            name: "medical-terms",
+            value: "I have read the recommendation for medical testing"
+        })
+
+        let videoTerms = [];
+        for (let k = 0; k <= 3; k++) {
+            if ($(`#video-consent >div:nth-child(${k}) input`).is(":checked")) {
+                videoTerms.push($(`#video-consent >div:nth-child(${k}) label`).html())
+            }
+        }
+
+        formData.push({
+            name: "video-terms",
+            value: videoTerms
+        })
+
+        sendForm(formData, formURL)
+    }
 }
 
 // Send Form Data
@@ -167,12 +206,13 @@ const sendForm = (formData, formURL) => {
             if (result.status === 500) {
                 alert(result.data.message)
             } else {
-                showSubmissionModal("Thank you for submitting your feedback!");
+                showSubmissionModal("Vielen Dank für Ihre Einreichung!");
             }
         });
 
 }
 
 const fillFIelds = () => {
-    $("form textarea").val("hytg")
+    $("form textarea").val("Test Answer")
+    $("form input").val("Test Answer")
 }
