@@ -771,6 +771,34 @@ footer a:hover {
     margin-top: 2rem;
 }
 
+/* Modal Video */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--light-blue);
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    display: none;
+}
+
+.video-modal iframe {
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    left: 10%;
+}
+
+.video-modal>i {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    color: var(--blue);
+}
+
 
 /* Home Contact Section */
 
