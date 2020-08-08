@@ -18,24 +18,6 @@ const closeNav = () => {
     $(".navbar-page-wrapper").fadeOut(1000)
 }
 
-const openVideoModal = () => {
-    $(".body").css("overflow-y", "none")
-    $(".video-modal").fadeIn(1500);
-
-    let iframe = document.querySelector('.video-modal iframe');
-    let player = new Vimeo.Player(iframe);
-    player.play()
-
-}
-
-const closeVideoModal = () => {
-    let iframe = document.querySelector('.video-modal iframe');
-    let player = new Vimeo.Player(iframe);
-    player.pause()
-
-    $(".body").css("overflow-y", "scroll")
-    $(".video-modal").fadeOut(1500);
-}
 
 $(".navbar-page-wrapper").click(() => {
     closeNav();
@@ -87,6 +69,16 @@ $("form .form-rating span").click(function () {
 // Video
 const pageName = window.location.pathname;
 if (pageName === "/" || pageName === "/index.html" || pageName === "/about.html") {
+    let iframe = document.querySelector('.video-frame iframe');
+    let player = new Vimeo.Player(iframe);
+
+    $(".video-frame .video-overlay button").click(() => {
+        $(".video-overlay").fadeOut("slow");
+        player.play()
+    })
+}
+
+if (pageName === "/concept.html") {
     let iframe = document.querySelector('.video-frame iframe');
     let player = new Vimeo.Player(iframe);
 
