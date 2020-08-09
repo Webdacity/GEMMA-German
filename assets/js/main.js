@@ -185,6 +185,11 @@ const submitForm = (formID, formURL) => {
             value: "I have read the recommendation for medical testing"
         })
 
+        formData.push({
+            name: "privacy-terms",
+            value: "I have read the terms of the Privacy Policy"
+        })
+
         let videoTerms = [];
         for (let k = 0; k <= 3; k++) {
             if ($(`#video-consent >div:nth-child(${k}) input`).is(":checked")) {
