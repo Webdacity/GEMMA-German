@@ -318,6 +318,14 @@ section {
     margin: 0 1rem;
 }
 
+footer .navbar-content-language a {
+    color: var(--blue);
+}
+
+footer .navbar-content-language {
+    padding: 0.5rem;
+}
+
 /* Footer */
 
 footer {
