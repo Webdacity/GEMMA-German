@@ -97,7 +97,7 @@ if (pageName === "/concept.html") {
 if (pageName === "/feedback.html" || pageName === "/application.html") {
     axios({
             method: "get",
-            url: "https://gemma-backend.herokuapp.com/ping"
+            url: `${api_url}/ping`
         })
         .then(result => {
             console.log("Server Pinged: " + result.status)
@@ -188,6 +188,11 @@ const submitForm = (formID, formURL) => {
         formData.push({
             name: "privacy-terms",
             value: "I have read the terms of the Privacy Policy"
+        })
+
+        formData.push({
+            name: "german-application",
+            value: true
         })
 
         let videoTerms = [];
