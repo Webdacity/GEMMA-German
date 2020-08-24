@@ -177,17 +177,17 @@ const submitForm = (formID, formURL) => {
 
         formData.push({
             name: "cost-terms",
-            value: "I agree to the terms of cancellation."
+            value: "Ich stimme den Stornierungsbedingungen zu"
         });
 
         formData.push({
             name: "medical-terms",
-            value: "I have read the recommendation for medical testing"
+            value: "Ich habe diese Empfelung wahrgenommen"
         })
 
         formData.push({
             name: "privacy-terms",
-            value: "I have read the terms of the Privacy Policy"
+            value: "Ich habe diese Empfelung wahrgenommen"
         })
 
         formData.push({
