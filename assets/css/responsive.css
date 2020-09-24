@@ -112,6 +112,16 @@
         width: 60vw;
     }
 
+    .home-contact-details {
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: right;
+    }
+
+    .home-contact-details a {
+        margin: 0.5rem 0;
+    }
+
     /* Video */
 
     .video-frame iframe {
@@ -127,6 +137,8 @@
         width: 95%;
         height: 100%;
     }
+
+
 
 
     /* Feedback Page */
