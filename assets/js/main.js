@@ -159,6 +159,11 @@ const submitForm = (formID, formURL) => {
 
         }
 
+        formData.push({
+            name: "german-feedback",
+            value: true
+        })
+
         sendForm(formData, formURL)
     }
 
